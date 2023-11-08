@@ -22,6 +22,21 @@ public class StringUtilsTests {
     }
 
     @Test
+    public void stringUtils_containsAny_2() {
+        var anyChar = "0123459,.:; _!#$%^&*(){}[]-+=/\\'\"";
+        var strTest1 = "ПроверяемаяСтрок\\а";
+        var strTest2 = "ПроверяемаяСтрок\"а";
+        var strTest3 = "ПроверяемаяСтрок/а";
+        var strTest4 = "ПроверяемаяСтрок-а";
+
+        assertThat(StringUtils.containsAny(strTest1, anyChar)).isTrue();
+        assertThat(StringUtils.containsAny(strTest2, anyChar)).isTrue();
+        assertThat(StringUtils.containsAny(strTest3, anyChar)).isTrue();
+        assertThat(StringUtils.containsAny(strTest4, anyChar)).isTrue();
+    }
+
+
+    @Test
     public void stringUtils_reverse() {
         var originalString = "foreach";
         var reverseString = StringUtils.reverse(originalString);
