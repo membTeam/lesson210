@@ -23,16 +23,20 @@ public class StringUtilsTests {
 
     @Test
     public void stringUtils_containsAny_2() {
-        var anyChar = "0123459,.:; _!#$%^&*(){}[]-+=/\\'\"";
-        var strTest1 = "ПроверяемаяСтрок\\а";
-        var strTest2 = "ПроверяемаяСтрок\"а";
-        var strTest3 = "ПроверяемаяСтрок/а";
-        var strTest4 = "ПроверяемаяСтрок-а";
+        var anyChar = "абвгд";
+                //"a-Z";
+        //var anyChar2 = "0123459,.:; _!#$%^&*(){}[]-+=/\\'\"";
+                //"а-Я";
+                //
+        var strTest1 = "Names";
+        var strTest2 = "Провер";
+//        var strTest3 = "ПроверяемаяСтрок/а";
+//        var strTest4 = "ПроверяемаяСтрок-а";
 
-        assertThat(StringUtils.containsAny(strTest1, anyChar)).isTrue();
-        assertThat(StringUtils.containsAny(strTest2, anyChar)).isTrue();
-        assertThat(StringUtils.containsAny(strTest3, anyChar)).isTrue();
-        assertThat(StringUtils.containsAny(strTest4, anyChar)).isTrue();
+        assertThat(StringUtils.containsAny(strTest1, anyChar)).isFalse();
+        assertThat(StringUtils.containsAny(strTest2, anyChar)).isFalse();
+//        assertThat(StringUtils.containsAny(strTest3, anyChar)).isTrue();
+//        assertThat(StringUtils.containsAny(strTest4, anyChar)).isTrue();
     }
 
 
@@ -74,7 +78,7 @@ public class StringUtilsTests {
 
     @Test
     public void verifyStringData() {
-        var str = "АвтоСтрокаИеёМожноПроверитьъ33";
+        var str = "автоСтрокаИеёМожноПроверитьъ";
         List<Integer> lsInt = new ArrayList<>();
 
         final int MINCHAR = 1040,
@@ -129,6 +133,21 @@ public class StringUtilsTests {
         System.out.println("intChar: " + intChar);
 
         System.out.println( "char for 1106: " + ((char) 1106) );*/
+
+    }
+
+    @Test
+    public void verifyString_isAlpha() {
+
+        var strTest = "ЭтоСтрока";
+        var strTest2 = "ЭтоСтрока</";
+        var strTest3 = "ЭтоСтрокаThisString";
+
+        assertThat(StringUtils.isAlpha(strTest)).isTrue();
+
+        assertThat(StringUtils.isAlpha(strTest2)).isFalse();
+
+        assertThat(StringUtils.isAlpha(strTest3)).isTrue();
 
     }
 
